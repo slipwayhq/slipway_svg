@@ -1,4 +1,4 @@
-publisher := "slipway"
+publisher := "slipwayhq"
 name := "svg"
 
 build configuration="debug":
@@ -9,7 +9,7 @@ build configuration="debug":
 
   cd src && cargo build --target wasm32-wasip2 {{ if configuration == "release" { "--release" } else { "" } }}
 
-  cp target/wasm32-wasip2/{{configuration}}/{{publisher}}_{{name}}.wasm artifacts/{{publisher}}.{{name}}/slipway_component.wasm
+  cp target/wasm32-wasip2/{{configuration}}/slipway_{{name}}.wasm artifacts/{{publisher}}.{{name}}/slipway_component.wasm
   cp slipway_component.json artifacts/{{publisher}}.{{name}}
 
   slipway package artifacts/{{publisher}}.{{name}}

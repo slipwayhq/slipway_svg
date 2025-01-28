@@ -1,0 +1,42 @@
+{
+  "publisher": "slipway",
+  "name": "svg",
+  "description": "Renders SVG to a canvas.",
+  "version": "0.0.1",
+  "input": {
+    "properties": {
+      "width": {
+        "type": "uint32"
+      },
+      "height": {
+        "type": "uint32"
+      },
+      "svg": {
+        "type": "string",
+        "metadata": {
+          "description": "SVG string."
+        }
+      }
+    }
+  },
+  "output": {
+    "properties": {
+      "canvas": {
+        "properties": {
+          "width": {
+            "type": "uint32"
+          },
+          "height": {
+            "type": "uint32"
+          },
+          "data": {
+            "type": "string",
+            "metadata": {
+              "description": "Base64 encoded vector of RGBA unsigned bytes."
+            }
+          }
+        }
+      }
+    }
+  }
+}

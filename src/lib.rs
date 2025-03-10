@@ -1,6 +1,5 @@
 use std::sync::Arc;
 
-use image::RgbaImage;
 use resvg::tiny_skia::{self, Pixmap};
 use serde::{Deserialize, Serialize};
 use usvg::fontdb;
@@ -40,18 +39,11 @@ impl Guest for Component {
 
         resvg::render(&tree, tiny_skia::Transform::default(), &mut pixels.as_mut());
 
-        let img = RgbaImage::from_vec(input.width, input.height, pixels.take()).ok_or(
-            ComponentError {
-                message: "Could not create ImageBuffer from bytes".to_string(),
-                inner: vec![],
-            },
-        )?;
-
         let output = Output {
             canvas: CanvasResult {
-                width: img.width(),
-                height: img.height(),
-                data: slipway_host::encode_bin(img.into_vec().as_slice()),
+                width: input.width,
+                height: input.height,
+                data: slipway_host::encode_bin(pixels.take().as_slice()),
             },
         };
 

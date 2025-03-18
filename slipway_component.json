@@ -17,6 +17,14 @@
           "description": "SVG string."
         }
       }
+    },
+    "optionalProperties": {
+      "background": {
+        "type": "string",
+        "metadata": {
+          "description": "Background color."
+        }
+      }
     }
   },
   "output": {

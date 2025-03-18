@@ -24,6 +24,15 @@ impl Guest for Component {
             inner: vec![],
         })?;
 
+        if let Some(background) = input.background {
+            let background_color = parse_color(&background).map_err(|e| ComponentError {
+                message: format!("Failed to parse color: {}", background),
+                inner: vec![e.to_string()],
+            })?;
+
+            pixels.fill(background_color);
+        }
+
         let options = usvg::Options {
             font_resolver: create_font_resolver(),
             ..usvg::Options::default()
@@ -192,11 +201,38 @@ pub fn slipway_font_selector() -> usvg::FontSelectionFn<'static> {
     })
 }
 
+fn parse_color(input: &str) -> Result<tiny_skia::Color, csscolorparser::ParseColorError> {
+    fn map_color(c: csscolorparser::Color) -> tiny_skia::Color {
+        let rgba = c.to_rgba8();
+        tiny_skia::Color::from_rgba8(rgba[0], rgba[1], rgba[2], rgba[3])
+    }
+
+    if let Some(s) = input.strip_prefix('#') {
+        if s.len() == 4 {
+            // Swap characters 0 and 3 so ARGB becomes RGBA.
+            let mut chars: Vec<char> = s.chars().collect();
+            chars.swap(0, 3);
+            let rgba_string: String = chars.into_iter().collect();
+            return csscolorparser::parse(&rgba_string).map(map_color);
+        } else if s.len() == 8 {
+            // Swap characters 0 and 1 with characters 6 and 7 so ARGB becomes RGBA.
+            let mut chars: Vec<char> = s.chars().collect();
+            chars.swap(0, 6);
+            chars.swap(1, 7);
+            let rgba_string: String = chars.into_iter().collect();
+            return csscolorparser::parse(&rgba_string).map(map_color);
+        }
+    }
+
+    csscolorparser::parse(input).map(map_color)
+}
+
 #[derive(Deserialize)]
 struct Input {
     width: u32,
     height: u32,
     svg: String,
+    background: Option<String>,
 }
 
 #[derive(Serialize)]

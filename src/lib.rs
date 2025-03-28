@@ -184,20 +184,20 @@ pub fn slipway_font_selector() -> usvg::FontSelectionFn<'static> {
             style,
         };
 
-        let id = fontdb.query(&query);
+        fontdb.query(&query)
 
-        if id.is_none() {
-            slipway_host::log_warn(&format!(
-                "No match for \"{}\" font-family.",
-                font.families()
-                    .iter()
-                    .map(|f| f.to_string())
-                    .collect::<Vec<_>>()
-                    .join(", "),
-            ));
-        }
+        // if id.is_none() {
+        //     slipway_host::log_warn(&format!(
+        //         "No match for \"{}\" font-family.",
+        //         font.families()
+        //             .iter()
+        //             .map(|f| f.to_string())
+        //             .collect::<Vec<_>>()
+        //             .join(", "),
+        //     ));
+        // }
 
-        id
+        // id
     })
 }
 

@@ -16,7 +16,7 @@ This component may need to access fonts from the local system if it needs to ren
 
 Test the component by running the following command and pasting in the input when prompted:
 ```
-slipway run-component "slipwayhq.svg.0.5.0" --allow-fonts
+slipway run-component "slipwayhq.svg.0.6.0" --allow-fonts
 ```
 
 Input:

@@ -24,9 +24,9 @@ impl Guest for Component {
             inner: vec![],
         })?;
 
-        if let Some(background) = input.background {
-            let background_color = parse_color(&background).map_err(|e| ComponentError {
-                message: format!("Failed to parse color: {}", background),
+        if let Some(background_color) = input.background_color {
+            let background_color = parse_color(&background_color).map_err(|e| ComponentError {
+                message: format!("Failed to parse color: {}", background_color),
                 inner: vec![e.to_string()],
             })?;
 
@@ -232,7 +232,7 @@ struct Input {
     width: u32,
     height: u32,
     svg: String,
-    background: Option<String>,
+    background_color: Option<String>,
 }
 
 #[derive(Serialize)]

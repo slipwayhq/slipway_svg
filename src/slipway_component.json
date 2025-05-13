@@ -19,7 +19,7 @@
       }
     },
     "optionalProperties": {
-      "background": {
+      "background_color": {
         "type": "string",
         "metadata": {
           "description": "Background color."

@@ -22,9 +22,10 @@ slipway run-component "slipwayhq.svg.0.5.0" --allow-fonts
 Input:
 ```json
 {
-  "width": 400,
-  "height": 300,
-  "svg": "<svg width=\"400\" height=\"300\" viewBox=\"0 0 400 300\" xmlns=\"http://www.w3.org/2000/svg\"><mask id=\"satori_om-id\"><rect x=\"0\" y=\"0\" width=\"400\" height=\"300\" fill=\"#fff\"/></mask><rect x=\"0\" y=\"0\" width=\"400\" height=\"300\" fill=\"#fff\"/><clipPath id=\"satori_cp-id-0\"><rect x=\"163\" y=\"79\" width=\"75\" height=\"65\"/></clipPath><mask id=\"satori_om-id-0\"><rect x=\"163\" y=\"79\" width=\"75\" height=\"65\" fill=\"#fff\"/></mask><image x=\"163\" y=\"79\" width=\"75\" height=\"65\" href=\"data:image/svg+xml;utf8,%3Csvg  fill=%22%23000%22 xmlns=%22http://www.w3.org/2000/svg%22 width=%22NaN%22 height=%22null%22 viewBox=%220 0 75 65%22%3E%3Cpath d=%22M37.59.25l36.95 64H.64l36.95-64z%22%3E%3C/path%3E%3C/svg%3E\" preserveAspectRatio=\"none\" clip-path=\"url(#satori_cp-id-0)\" mask=\"url(#satori_om-id-0)\"/><mask id=\"satori_om-id-0-0\"><rect x=\"163\" y=\"79\" width=\"0\" height=\"65\" fill=\"#fff\"/></mask><mask id=\"satori_om-id-1\"><rect x=\"114\" y=\"184\" width=\"172\" height=\"37\" fill=\"#fff\"/></mask><text x=\"114\" y=\"213.6875\" width=\"73.609375\" height=\"37.5\" font-weight=\"600\" font-style=\"normal\" font-size=\"32\" font-family=\"serif\" fill=\"black\">Hello</text><text x=\"187.609375\" y=\"213.6875\" width=\"6.296875\" height=\"37.5\" font-weight=\"600\" font-style=\"normal\" font-size=\"32\" font-family=\"serif\" fill=\"black\">,</text><text x=\"193.90625\" y=\"213.6875\" width=\"7.9375\" height=\"37.5\" font-weight=\"600\" font-style=\"normal\" font-size=\"32\" font-family=\"serif\" fill=\"black\"> </text><text x=\"201.84375\" y=\"213.6875\" width=\"83.3125\" height=\"37.5\" font-weight=\"600\" font-style=\"normal\" font-size=\"32\" font-family=\"serif\" fill=\"black\">World</text></svg>"
+  "width": 467,
+  "height": 462,
+  "background_color": "#ccccff",
+  "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"467\" height=\"462\"><rect x=\"80\" y=\"60\" width=\"250\" height=\"250\" rx=\"20\" style=\"fill:#ff0000; stroke:#000000;stroke-width:2px;\" /><rect x=\"140\" y=\"120\" width=\"250\" height=\"250\" rx=\"40\" style=\"fill:#0000ff; stroke:#000000; stroke-width:2px; fill-opacity:0.7;\" /></svg>"
 }
 ```
 
@@ -32,9 +33,11 @@ Output:
 ```json
 {
   "canvas": {
-    "width": 400,
-    "height": 300,
+    "width": 467,
+    "height": 462,
     "data": "<encoded_rgba_bytes_omitted>"
   }
 }
 ```
+
+![Example Output](example-output.png)

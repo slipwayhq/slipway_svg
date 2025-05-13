@@ -6,6 +6,16 @@ A [Slipway](https://slipway.co/) Component which takes an SVG string and outputs
 This Component is used by Components such as [`slipwayhq.jsx`](https://github.com/slipwayhq/slipway_jsx)
 and [`slipwayhq.echarts`](https://github.com/slipwayhq/slipway_echarts).
 
+## Required Inputs
+
+- `width`: The width of the output.
+- `height`: The height of the output.
+- `svg`: The SVG string.
+
+## Optional Inputs
+
+- `background_color`: The background color to set the canvas before the SVG is rendered, in hex format (e.g. `#ccccff`).
+
 ## Suggested Permissions
 
 ### `--allow-fonts`

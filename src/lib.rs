@@ -46,7 +46,28 @@ impl Guest for Component {
                 }
             })?;
 
-        resvg::render(&tree, tiny_skia::Transform::default(), &mut pixels.as_mut());
+        let transform = if !input.scale {
+            tiny_skia::Transform::default()
+        } else {
+            // Get the SVG original dimensions in pixels
+            let svg_size = tree.size();
+            let svg_width = svg_size.width() as f32;
+            let svg_height = svg_size.height() as f32;
+
+            // Compute scale factor to fit into input dimensions while preserving aspect ratio
+            let scale_x = input.width as f32 / svg_width;
+            let scale_y = input.height as f32 / svg_height;
+            let scale = scale_x.min(scale_y); // fit within bounds
+
+            // Center the image within the target dimensions
+            let trans_x = ((input.width as f32 - svg_width * scale) / 2.0).max(0.0);
+            let trans_y = ((input.height as f32 - svg_height * scale) / 2.0).max(0.0);
+
+            // Create the transform: scale then translate
+            tiny_skia::Transform::from_scale(scale, scale).post_translate(trans_x, trans_y)
+        };
+
+        resvg::render(&tree, transform, &mut pixels.as_mut());
 
         let output = Output {
             canvas: CanvasResult {
@@ -233,6 +254,9 @@ struct Input {
     height: u32,
     svg: String,
     background_color: Option<String>,
+
+    #[serde(default)]
+    scale: bool,
 }
 
 #[derive(Serialize)]

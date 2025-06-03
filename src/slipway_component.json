@@ -24,6 +24,9 @@
         "metadata": {
           "description": "Background color."
         }
+      },
+      "scale": {
+        "type": "boolean"
       }
     }
   },

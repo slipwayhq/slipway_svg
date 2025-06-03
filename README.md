@@ -15,6 +15,7 @@ and [`slipwayhq.echarts`](https://github.com/slipwayhq/slipway_echarts).
 ## Optional Inputs
 
 - `background_color`: The background color to set the canvas before the SVG is rendered, in hex format (e.g. `#ccccff`).
+- `scale`: Whether to scale the SVG to fit the canvas. Defaults to `false`.
 
 ## Suggested Permissions
 
@@ -26,7 +27,7 @@ This component may need to access fonts from the local system if it needs to ren
 
 Test the component by running the following command and pasting in the input when prompted:
 ```
-slipway run-component "slipwayhq.svg.0.6.0" --allow-fonts
+slipway run-component "slipwayhq.svg.0.6.1" --allow-fonts
 ```
 
 Input:

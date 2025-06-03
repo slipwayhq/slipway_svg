@@ -1,7 +1,7 @@
 publisher := "slipwayhq"
 name := "svg"
 
-build configuration="debug": clear-components wit && (cargo-build configuration) (assemble configuration) package
+build configuration="release": clear-components wit && (cargo-build configuration) (assemble configuration) package
 build-ci: clear-components && (cargo-build "release") (assemble "release") package-ci
   rustup target add wasm32-wasip2
 
@@ -9,10 +9,10 @@ clear-components:
   rm -rf components
   mkdir -p components/{{publisher}}.{{name}}
 
-cargo-build configuration="debug":
+cargo-build configuration="release":
   cd src && cargo build --target wasm32-wasip2 {{ if configuration == "release" { "--release" } else { "" } }}
 
-assemble configuration="debug":
+assemble configuration="release":
   cp target/wasm32-wasip2/{{configuration}}/slipway_{{name}}.wasm components/{{publisher}}.{{name}}/run.wasm
   cp src/slipway_component.json components/{{publisher}}.{{name}}
 

@@ -35,6 +35,7 @@ impl Guest for Component {
 
         let options = usvg::Options {
             font_resolver: create_font_resolver(),
+            font_family: "sans-serif".to_string(),
             ..usvg::Options::default()
         };
 
